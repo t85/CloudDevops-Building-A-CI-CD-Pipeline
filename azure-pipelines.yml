@@ -30,6 +30,9 @@ stages:
   displayName: Build stage
   jobs:
   - job: BuildJob
+    pool: myAgentPool
+    steps:
+    
     - script: |
         python -m venv antenv
         source antenv/bin/activate
