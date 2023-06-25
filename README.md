@@ -49,3 +49,14 @@ Port: 443
 <TODO: Add link Screencast on YouTube>
 
 
+python3 -m venv ~/.flask-ml-azure
+source ~/.flask-ml-azure/bin/activate
+
+ssh-keygen -t rsa
+
+git clone git@github.com:t85/CloudDevops-Building-A-CI-CD-Pipeline.git
+
+make install
+
+az webapp up --resource-group Azuredevops --name flask-ml-service-th --sku F1 --location eastus --verbose
+
