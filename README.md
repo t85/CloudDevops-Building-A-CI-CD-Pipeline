@@ -85,7 +85,7 @@ Then, the azure pipeline will build the project:
 
 ![Azure App Service](Screenshots/05-Screenshot-Azure-Pipeline.png)
 
-Take a look at the documention for for information about this topic: https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops.
+Take a look at the documention for more information about this topic: https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops.
 
 And also the GitHub Action was successfull:
 
@@ -98,7 +98,7 @@ Let's make another prediction from the deployed project:
 In order to observe the application, you can take a look at the logs by using
 
 ```bash
-az webapp log tail -g flask-ml-service-rg --name flask-ml-service-th
+az webapp log tail -g flask-ml-service-th --name flask-ml-service-th
 ```
 
 ![Logs](Screenshots/08-Logs.png)
