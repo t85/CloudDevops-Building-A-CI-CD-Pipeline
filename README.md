@@ -38,22 +38,43 @@ and add it to your GitHub account.
 ```bash
 git clone git@github.com:t85/CloudDevops-Building-A-CI-CD-Pipeline.git
 ```
-![Project cloned to Cloud Shell](Screeshots/01-Screenshot-Project-Cloned-Into-Cloud-Shell.png)
+![Project cloned to Cloud Shell](Screenshots/01-Screenshot-Project-Cloned-Into-Cloud-Shell.png)
 
 5. Create a new Python environment:
 ```bash
 python3 -m venv ~/.flask-ml-azure
 source ~/.flask-ml-azure/bin/activate
 ```
+
 6. Install dependencies and run tests:
 ```bash
 make install
 ```
+![make install](Screenshots/02-Screenshot-Make-All.png)
+
 7. Make a prediction:
 ```bash
 ./make_prediction.sh
 ```
+![Make prediction](Screenshots/04b-Screenshot-Make-Prediction.png)
+
+
 8. Also, the GitHub action was successful:
+
+![GitHub Action](Screenshots/03-Screenshot-GitHub-Actions.png)
+
+9. You can deploy the application in the Azure Cloud Shell to Azure App Service by using
+```bash
+az webapp up --resource-group Azuredevops 
+             --name flask-ml-service-th 
+             --sku F1
+            --location eastus 
+            --verbose
+```
+
+10. Now you can run the project again:
+
+![Azure App Service](Screenshots/05-Screenshot-Azure-App-Service.png)
 
 
 ### Deploy the app using CI/CD
@@ -62,11 +83,26 @@ In order to trigger the CI/CD process, commit and push the repository.
 
 Then, the azure pipeline will build the project:
 
+![Azure App Service](Screenshots/05-Screenshot-Azure-Pipeline.png)
+
+And also the GitHub Action was successfull:
+
+![Azure App Service](Screenshots/06-Screenshot-GitHub-Action.png)
+
+Let's make another prediction from the deployed project:
+
+![Azure App Service](Screenshots/07-Prediction-Azure.png)
+
+In order to observe the application, you can take a look at the logs by using
+
+```bash
+az webapp log tail -g flask-ml-service-rg --name flask-ml-service-th
+```
+
+![Logs](Screenshots/08-Logs.png)
 
 
 
-And also 
-az webapp up --resource-group Azuredevops --name flask-ml-service-th --sku F1 --location eastus --verbose
 
 * Project running on Azure App Service
 
