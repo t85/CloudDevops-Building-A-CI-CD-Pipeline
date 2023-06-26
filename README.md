@@ -9,14 +9,15 @@ In this procject we demonstrate continuous integration (CI) and continuous deliv
 <TODO: Project Plan
 
 * A link to a Trello board for the project
-* A link to a spreadsheet that includes the original and final project plan>
+* Projectplan: https://github.com/t85/CloudDevops-Building-A-CI-CD-Pipeline/blob/main/Projectplan.xlsx
 
 ## Instructions
 
-<TODO:  
-* Architectural Diagram (Shows how key parts of the system work)>
+First, let's take a look at the architecture:
 
-<TODO:  Instructions for running the Python project.  How could a user with no context run this project without asking you for any help.  Include screenshots with explicit steps to create that work. Be sure to at least include the following screenshots:
+![Project cloned to Cloud Shell](Screenshots/10-Architecture.png)
+
+The source code gets pushed to GitHub. This triggers the GitHub Action for testing and the Azure Pipeline for building the application and deploying to Azure App Service.
 
 In order to run the project, perform the following steps:
 
@@ -85,6 +86,8 @@ Then, the azure pipeline will build the project:
 
 ![Azure App Service](Screenshots/05-Screenshot-Azure-Pipeline.png)
 
+Take a look at the documention for for information about this topic: https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops.
+
 And also the GitHub Action was successfull:
 
 ![Azure App Service](Screenshots/06-Screenshot-GitHub-Action.png)
@@ -101,53 +104,25 @@ az webapp log tail -g flask-ml-service-rg --name flask-ml-service-th
 
 ![Logs](Screenshots/08-Logs.png)
 
+### Load testing
 
-
-
-* Project running on Azure App Service
-
-* Project cloned into Azure Cloud Shell
-
-* Passing tests that are displayed after running the `make all` command from the `Makefile`
-
-* Output of a test run
-
-* Successful deploy of the project in Azure Pipelines.  [Note the official documentation should be referred to and double checked as you setup CI/CD](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops).
-
-* Running Azure App Service from Azure Pipelines automatic deployment
-
-* Successful prediction from deployed flask app in Azure Cloud Shell.  [Use this file as a template for the deployed prediction](https://github.com/udacity/nd082-Azure-Cloud-DevOps-Starter-Code/blob/master/C2-AgileDevelopmentwithAzure/project/starter_files/flask-sklearn/make_predict_azure_app.sh).
-The output should look similar to this:
+You can use Locust to perform a load test. For that, install Locust by using
 
 ```bash
-udacity@Azure:~$ ./make_predict_azure_app.sh
-Port: 443
-{"prediction":[20.35373177134412]}
+pip install locust
+locust
 ```
 
-* Output of streamed log files from deployed application
+Now you can use locus on your browser using localhost:
+![Logs](Screenshots/09-locust.png)
 
-> 
 
 ## Enhancements
 
-<TODO: A short description of how to improve the project in the future>
+For a real project you would work with several branches for a better development process. For examlple, you could use GitFlow: master, development and release branches.
+Also, different stages would be neccessary: At least one production stage and one integration/develpment stage.
 
 ## Demo 
 
-Youtube screencast:
+You can see a demo on the following Youtube screencast:
 https://www.youtube.com/watch?v=0GBhjHneWek
-
-
-
-python3 -m venv ~/.flask-ml-azure
-source ~/.flask-ml-azure/bin/activate
-
-ssh-keygen -t rsa
-
-git clone git@github.com:t85/CloudDevops-Building-A-CI-CD-Pipeline.git
-
-make install
-
-az webapp up --resource-group Azuredevops --name flask-ml-service-th --sku F1 --location eastus --verbose
-
