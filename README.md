@@ -66,7 +66,7 @@ make install
 9. You can deploy the application in the Azure Cloud Shell to Azure App Service by using
 ```bash
 az webapp up --resource-group Azuredevops 
-             --name flask-ml-service-th 
+             --name flask-ml-service-thomas 
              --sku F1
             --location eastus 
             --verbose

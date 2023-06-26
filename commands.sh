@@ -14,7 +14,7 @@ make install
 ./make_prediction.sh
 
 az webapp up --resource-group Azuredevops 
-             --name flask-ml-service-th 
+             --name flask-ml-service-thomas 
              --sku F1
             --location eastus 
             --verbose
