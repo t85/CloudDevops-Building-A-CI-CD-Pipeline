@@ -6,9 +6,8 @@
 In this procject we demonstrate continuous integration (CI) and continuous delivery (CD). For that we create a ML application and use GitHub Actions for CI and Azure Pipelines for CD.
 
 ## Project Plan
-<TODO: Project Plan
 
-* A link to a Trello board for the project
+* Trello board: https://trello.com/b/20T3vYBD/ci-cd-project
 * Projectplan: https://github.com/t85/CloudDevops-Building-A-CI-CD-Pipeline/blob/main/Projectplan.xlsx
 
 ## Instructions
